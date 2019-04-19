@@ -13,8 +13,9 @@ int main(){
     scanf("%c" ,&task);
     switch(task){
         case ('a'):
-         printf("Key (less than 26) =\n ");
+         printf("Key=  ");
     scanf("%d",&key);
+    key=key%26;
     for(ind=0; str[ind]!='\0' ; ind++){
         
         if(str[ind] != 32){
@@ -31,7 +32,7 @@ int main(){
      }   
     }
 
-   printf("Encryption= %s\n", str);
+   printf("\nEncryption= %s\n", str);
  break;
         case ('b'):
            printf("a b c d e f g h i j k l m n o p q r s t u v w x y z then type phrase\n");
@@ -124,8 +125,30 @@ int main(){
             }
     printf("%s\n",str); 
     break;
-    case('c'): 
-    printf("work in progress");
+    
+case('c'): 
+    printf("Key= ");
+    scanf("%d",&key);
+    key=key%26;
+   for(ind=0; str[ind]!='\0' ; ind++){
+        if(str[ind] != 32){
+    
+            if(str[ind]>90){
+            str[ind] =str[ind]-key;
+                if((str[ind])<(97)){
+            str[ind]=str[ind]+26;
+        }
+        }
+        if(str[ind]<=90){
+        str[ind] =str[ind]-key;    
+          if((str[ind])<65){
+            str[ind]=str[ind]+26;
+        }
+        }
+     }   
+}
+   printf("\nDecrytion= %s\n",str);
+    return 0;
 
 }
 return 0;
