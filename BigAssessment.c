@@ -3,14 +3,18 @@ int main(){
     int ind=0;
     int key=1;
     char task;
+    char burn;
     char str[500];
-    int a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
-    printf("Now please select task: \n a) Rotation Encryption\n b) Substitution Encryption\n c) Rotation Decryption\n d) Substitution Decryption\n Selection= ");
+    char a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
+    printf("first whats the phrase: ");
+    scanf("%[^\n]s" ,str);
+    scanf("%c",&burn);
+    printf("\n Now what do you want to do with it?\n a) Rotation Encryption\n b) Substitution Encryption\n c) Rotation Decryption\n d) Substitution Decryption\n Selection= ");
     scanf("%c" ,&task);
     switch(task){
         case ('a'):
-         printf("Key (less than 26) then the phrase to be encrypted =\n ");
-    scanf("%d %[^\n]s",&key ,str);
+         printf("Key (less than 26) =\n ");
+    scanf("%d",&key);
     for(ind=0; str[ind]!='\0' ; ind++){
         
         if(str[ind] != 32){
@@ -30,9 +34,10 @@ int main(){
    printf("Encryption= %s\n", str);
  break;
         case ('b'):
-        printf("Okay so whats each letter equal\n a=");
-        scanf("%d" ,a);
-        for(i=0; str[ind] != '\0'; i++ ){
+           printf("a b c d e f g h i j k l m n o p q r s t u v w x y z then type phrase\n");
+    scanf("%c",&a);
+    scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a ,&b ,&c ,&d ,&e ,&f ,&g ,&h ,&i ,&j ,&k ,&l ,&m ,&n ,&o ,&p ,&q ,&r ,&s ,&t ,&u ,&v ,&w ,&x ,&y ,&z);
+    for(ind=0; str[ind] != '\0'; ind++ ){
         switch(str[ind]){
         case(32):
             break;
@@ -40,84 +45,88 @@ int main(){
             str[ind]=a;
             break;  
         case('b'):
-            str[ind]='w';
+            str[ind]=b;
             break;
         case('c'):
-            str[ind]='e';
+            str[ind]=c;
             break;
         case('d'):
-            str[ind]='r';
+            str[ind]=d;
             break;
         case('e'):
-            str[ind]='t';
+            str[ind]=e;
             break;
         case('f'):
-            str[ind]='y';
+            str[ind]=f;
             break;
         case('g'):
-            str[ind]='u';
+            str[ind]=g;
             break;
         case('h'):
-            str[ind]='i';
+            str[ind]=h;
             break;
         case('i'):
-            str[ind]='o';
+            str[ind]=i;
             break;
         case('j'):
-            str[ind]='p';
+            str[ind]=j;
             break;
         case('k'):
-            str[ind]='a';
+            str[ind]=k;
             break;
         case('l'):
-            str[ind]='s';
+            str[ind]=l;
             break;
         case('m'):
-            str[ind]='d';
+            str[ind]=m;
             break;
         case('n'):
-            str[ind]='f';
+            str[ind]=n;
             break;
         case('o'):
-            str[ind]='g';
+            str[ind]=o;
             break;
         case('p'):
-            str[ind]='h';
+            str[ind]=p;
             break;
         case('q'):
-            str[ind]='j';
+            str[ind]=q;
             break;
         case('r'):
-            str[ind]='k';
+            str[ind]=r;
             break;  
         case('s'):
-            str[ind]='l';
+            str[ind]=s;
             break;
         case('t'):
-            str[ind]='z';
+            str[ind]=t;
             break;
         case('u'):
-            str[ind]='x';
+            str[ind]=u;
             break;
         case('v'):
-            str[ind]='c';
+            str[ind]=v;
             break;
         case('w'):
-            str[ind]='v';
+            str[ind]=w;
             break;
         case('x'):
-            str[ind]='b';
+            str[ind]=x;
             break;
         case('y'):
-            str[ind]='n';
+            str[ind]=y;
             break;
         case('z'):
-            str[ind]='m';
+            str[ind]=z;
             break;
         }
+
             }
-    printf("%s",str);
-    
- }
+    printf("%s\n",str); 
+    break;
+    case('c'): 
+    printf("work in progress");
+
+}
 return 0;
 }
