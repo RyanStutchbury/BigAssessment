@@ -45,8 +45,6 @@ switch(task){
     scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a ,&b ,&c ,&d ,&e ,&f ,&g ,&h ,&i ,&j ,&k ,&l ,&m ,&n ,&o ,&p ,&q ,&r ,&s ,&t ,&u ,&v ,&w ,&x ,&y ,&z);
     for(ind=0; str[ind] != '\0'; ind++ ){
         switch(str[ind]){
-        case(32):
-            break;
         case('a'):
             str[ind]=a;
             break;  
@@ -124,6 +122,8 @@ switch(task){
             break;
         case('z'):
             str[ind]=z;
+            break;
+        default:
             break;
         }
 
@@ -158,8 +158,6 @@ case ('d'):
     scanf("%c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c %c",&a ,&b ,&c ,&d ,&e ,&f ,&g ,&h ,&i ,&j ,&k ,&l ,&m ,&n ,&o ,&p ,&q ,&r ,&s ,&t ,&u ,&v ,&w ,&x ,&y ,&z);
     for(ind=0; str[ind] != '\0'; ind++ ){
         switch(str[ind]){
-        case(32):
-            break;
         case('a'):
             str[ind]=a;
             break;  
@@ -238,6 +236,8 @@ case ('d'):
         case('z'):
             str[ind]=z;
             break;
+         default:
+         break;
         }
 
             }
