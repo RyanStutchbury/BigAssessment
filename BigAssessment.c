@@ -2,8 +2,12 @@
 int main(){
     /********************declaring the variables************************/
     int ind = 0;  
+    int solved = 0;
     int key;    
+    int tot;    
+    int testright, testleft, test2right, test3right;
     char task;
+    char keytest;
     char burn;
     char str[5000];
     char a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
@@ -13,7 +17,7 @@ int main(){
     printf ("first whats the phrase: ");
     scanf ("%[^\n]s" ,str);  //this format specifier reads everything including spaces until an enter
     scanf ("%c" ,&burn);  //whenever i would press enter to say i finished typing the phrase the enter would be scanned as the next scanf which would cause the program to exit so the only solution i could figure out was to save that enter to another variable that does nothing
-    printf ("\n Now what do you want to do with it?\n a) Rotation Encryption\n b) Substitution Encryption\n c) Known Rotation Decryption\n d) Known Substitution Decryption\n Selection= ");
+    printf ("\n Now what do you want to do with it?\n a) Rotation Encryption\n b) Substitution Encryption\n c) Known Rotation Decryption\n d) Known Substitution Decryption\n e) Unknown Rotation Decryption\n Selection= ");
     scanf ("%c" ,&task);
     /***********************************************************************************************/
    
@@ -408,6 +412,250 @@ switch (task){
         printf ("Encrytion= %s\n" ,str);      //prints ecrypted array
     break;
     /**********************************************************************/
+   
+    /********************************Unknown Rotation Decryption**************************************/
+    case ('e'):
+        for (ind = 0 ; str[ind] != '\0' ; ind++){     //this for loop goes through the array moving one letter right each time
+            if (str[ind] > 96   &&  str[ind] < 123){    //checks to see if the character is in the alphabet and is lower case 
+                str[ind] = str[ind] - 32;       //changes it from lower case to upper case
+            }
+        }
+        for (ind = 0 ; str[ind] != '\0' ; ind++){
+            testright = ind + 1;
+            testleft = ind - 1;
+            test2right = ind + 2;
+            test3right = ind + 3;   
+            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] < 91  &&  str[test2right] > 64  &&  str[test3right] == 32  &&  solved == 0){
+                tot = str[ind] - str[testright];
+                if (tot < 0){
+                    tot = tot + 26;    
+                }
+                switch (tot){
+                    case (12):        //the
+                       keytest = str[ind];
+                       while (keytest != 84){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                                keytest = keytest + 26;
+                            }
+                            key++;
+                        }
+                       solved = 1;
+                    break;
+                    case (13):        //and
+                       keytest = str[ind];
+                       while (keytest != 65){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                                keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    case (17):        //for
+                       keytest = str[ind];
+                       while (keytest != 70){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                                keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    case (9):        //are
+                       keytest = str[ind];
+                       while (keytest != 65){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                                keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    case (7):        //but
+                       keytest = str[ind];
+                       while (keytest != 66){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                            }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                }
+             }   
+            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] == 32  &&  solved == 0){
+                tot = str[ind] - str[testright];
+                if (tot < 0){
+                    tot = tot + 26;    
+                }
+                switch (tot){
+                    case (7):        //at
+                       keytest = str[ind];
+                       while (keytest != 65){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                   
+                    case (15):       	  //it
+                       keytest = str[ind];
+                       while (keytest != 73){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (21):               //in
+                       keytest = str[ind];
+                       while (keytest != 73){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (16):               //is
+                       keytest = str[ind];
+                       while (keytest != 73){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (14):                //my
+                       keytest = str[ind];
+                       while (keytest != 77){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+               
+                    case (4):                  //so
+                       keytest = str[ind];        
+                       while (keytest != 83){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                   
+                    case (5):               //to
+                       keytest = str[ind];
+                       while (keytest != 84){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (2):              //us
+                       keytest = str[ind];
+                       while (keytest != 85){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (9):          //of
+                       keytest = str[ind];
+                       while (keytest != 79){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (25):         //hi
+                       keytest = str[ind];
+                       while (keytest != 72){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    case (8):          //as
+                       keytest = str[ind];
+                       while (keytest != 65){
+                           keytest = keytest - 1;
+                           if (keytest < 65){
+                               keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    
+                    default:
+                    break;
+                }
+            }
+        }
+        if (key != 0){
+            printf ("\nkey is %d" ,key);   
+        }
+           
+        if (key == 0){
+            printf ("either the phrase doesnt need to be rotated or i cant find a word in it :(");
+        }                    
+        ind = 0;
+        for (ind = 0 ; str[ind] != '\0' ; ind++){
+            if (str[ind] > 96  &&  str[ind] < 123){
+                str[ind] = str[ind] - key;
+                if (str[ind] < 97){
+                    str[ind] = str[ind] + 26;
+                }
+            }
+            if (str[ind] < 91  &&  str[ind] > 64){
+                str[ind] = str[ind] - key;    
+                if (str[ind] < 65){
+                    str[ind] = str[ind] + 26;
+                }
+            } 
+        }
+        printf ("\nthe phrase is= %s\n" ,str);
+    break;
+    /************************************************************************************************/
 }
 return 0;
 }
