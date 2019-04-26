@@ -213,7 +213,7 @@ switch (task){
                 str[ind] = str[ind] - 32;       //changes it from lower case to upper case
             }
         }
-        printf ("Encrytion= %s\n" ,str);      //prints ecrypted array
+        printf ("Encryption= %s\n" ,str);      //prints ecrypted array
     break;
     /**********************************************************************/
    
@@ -233,7 +233,7 @@ switch (task){
                 }
             }   
         }
-        printf ("\nDecrytion= %s\n" ,str);    //prints decrypted array
+        printf ("\nDecryption= %s\n" ,str);    //prints decrypted array
     break;
     /********************************************************************/
    
@@ -409,7 +409,7 @@ switch (task){
                 str[ind] = str[ind] - 32;       //changes it from lower case to upper case
             }
         }
-        printf ("Encrytion= %s\n" ,str);      //prints ecrypted array
+        printf ("Decryption= %s\n" ,str);      //prints ecrypted array
     break;
     /**********************************************************************/
    
@@ -419,32 +419,32 @@ switch (task){
             if (str[ind] > 96   &&  str[ind] < 123){    //checks to see if the character is in the alphabet and is lower case 
                 str[ind] = str[ind] - 32;       //changes it from lower case to upper case
             }
-        }
-        for (ind = 0 ; str[ind] != '\0' ; ind++){
-            testright = ind + 1;
-            testleft = ind - 1;
-            test2right = ind + 2;
-            test3right = ind + 3;   
-            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] < 91  &&  str[test2right] > 64  &&  str[test3right] == 32  &&  solved == 0){
-                tot = str[ind] - str[testright];
-                if (tot < 0){
-                    tot = tot + 26;    
+        }                       
+        for (ind = 0 ; str[ind] != '\0' ; ind++){       //the index is initialised back to 0 and then this for loop goes through the array moving one letter right each time
+            testright = ind + 1;        //this is used to check to the right of the current index
+            testleft = ind - 1;         //this is used to check to the left of the current index
+            test2right = ind + 2;       //this is used to check 2 to the right of the current index
+            test3right = ind + 3;       //this is used to check 3 to the right of the current index
+            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] < 91  &&  str[test2right] > 64  &&  str[test3right] == 32  &&  solved == 0){ //this if statement checks for a three letter word, if the character to the left is a space (32), the first character is a letter, the second character is a letter, the third character is a letter and the fourth character is a space. Also checks to see if a solution has already been found
+                tot = str[ind] - str[testright];        //this equation finds the distance between the first two letters of the three letter word
+                if (tot < 0){                       //if the had been rotated so that a letter had been rotated back to the other side of the alphabet and the other had not, it would give a different value for the distance
+                    tot = tot + 26;                 //adding 26 to the distance fixes this issue
                 }
-                switch (tot){
-                    case (12):        //the
-                       keytest = str[ind];
-                       while (keytest != 84){
-                           keytest = keytest - 1;
-                           if (keytest < 65){
+                switch (tot){                   //this switch case uses the distance between the first two letters to make a guess at what the word might be
+                    case (12):        //if tot = 12 the word is likely 'the'
+                       keytest = str[ind];              //this sets the first letter to a new variable so the program can change and test the character without changing anything in the array
+                       while (keytest != 84){           //once the first letter has been rotated to the letter 't' it will stop
+                           keytest = keytest - 1;       //this rotates the letter through the alphabet  
+                           if (keytest < 65){           //if the letter goes below the letter 'a' it will be sent back to 'z' so it can keep being rotated
                                 keytest = keytest + 26;
                             }
-                            key++;
+                            key++;          //this keeps track of how many times the letter had to be rotated until it was the correct letter, this key is used later to rotate the entire array by that amount
                         }
-                       solved = 1;
+                       solved = 1;          //this makes it so once a solution has been found the program wont try find more words which will mess up the total for the key
                     break;
-                    case (13):        //and
+                    case (13):         //if tot = 13 the word is likely 'and'
                        keytest = str[ind];
-                       while (keytest != 65){
+                       while (keytest != 65){       //once the first letter has been rotated to the letter 'a' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                 keytest = keytest + 26;
@@ -453,9 +453,21 @@ switch (task){
                        }
                        solved = 1;
                     break;
-                    case (17):        //for
+            
+                   case (17):        //if tot = 17 the word is likely 'for'
                        keytest = str[ind];
-                       while (keytest != 70){
+                       while (keytest != 70){       //once the first letter has been rotated to the letter 'f' it will stop
+                           keytest = keytest - 1;
+                           if (keytest < 65){       
+                                keytest = keytest + 26;
+                           }
+                           key++;
+                       }
+                       solved = 1;
+                    break;
+                    case (9):         //if tot = 9 the word is likely 'are'
+                       keytest = str[ind];
+                       while (keytest != 65){        //once the first letter has been rotated to the letter 'a' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                 keytest = keytest + 26;
@@ -464,20 +476,9 @@ switch (task){
                        }
                        solved = 1;
                     break;
-                    case (9):        //are
+                    case (7):         //if tot = 7 the word is likely 'but'
                        keytest = str[ind];
-                       while (keytest != 65){
-                           keytest = keytest - 1;
-                           if (keytest < 65){
-                                keytest = keytest + 26;
-                           }
-                           key++;
-                       }
-                       solved = 1;
-                    break;
-                    case (7):        //but
-                       keytest = str[ind];
-                       while (keytest != 66){
+                       while (keytest != 66){       //once the first letter has been rotated to the letter 'b' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -488,15 +489,15 @@ switch (task){
                     break;
                 }
              }   
-            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] == 32  &&  solved == 0){
-                tot = str[ind] - str[testright];
+            if (str[testleft] == 32  &&  str[ind] > 64  &&  str[ind] < 91  &&  str[testright] > 64  &&  str[testright] > 64  &&  str[testright] < 91  &&  str[test2right] == 32  &&  solved == 0){ //this if statement checks for a two letter word, if the character to the left is a space (32), the first character is a letter, the second character is a letter and the third character is a space. Also checks to see if a solution has already been 
+                tot = str[ind] - str[testright];    //same equation as above to find the distance between letters
                 if (tot < 0){
                     tot = tot + 26;    
                 }
                 switch (tot){
-                    case (7):        //at
+                    case (7):                       //if tot = 7 the word is likely 'at'
                        keytest = str[ind];
-                       while (keytest != 65){
+                       while (keytest != 65){       //once the first letter has been rotated to the letter 'a' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -506,9 +507,9 @@ switch (task){
                        solved = 1;
                     break;
                    
-                    case (15):       	  //it
+                    case (15):       	            //if tot = 15 the word is likely 'it'
                        keytest = str[ind];
-                       while (keytest != 73){
+                       while (keytest != 73){       //once the first letter has been rotated to the letter 'i' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -518,9 +519,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (21):               //in
+                    case (21):                      //if tot = 21 the word is likely 'in'
                        keytest = str[ind];
-                       while (keytest != 73){
+                       while (keytest != 73){       //once the first letter has been rotated to the letter 'i' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -530,9 +531,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (16):               //is
+                    case (16):                      //if tot = 16 the word is likely 'is'
                        keytest = str[ind];
-                       while (keytest != 73){
+                       while (keytest != 73){       //once the first letter has been rotated to the letter 'i' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -542,9 +543,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (14):                //my
+                    case (14):                      //if tot = 14 the word is likely 'my'
                        keytest = str[ind];
-                       while (keytest != 77){
+                       while (keytest != 77){       //once the first letter has been rotated to the letter 'm' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -554,9 +555,9 @@ switch (task){
                        solved = 1;
                     break;
                
-                    case (4):                  //so
+                    case (4):                       //if tot = 4 the word is likely 'so'
                        keytest = str[ind];        
-                       while (keytest != 83){
+                       while (keytest != 83){       //once the first letter has been rotated to the letter 's' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -566,9 +567,9 @@ switch (task){
                        solved = 1;
                     break;
                    
-                    case (5):               //to
+                    case (5):                       //if tot = 5 the word is likely 'to'
                        keytest = str[ind];
-                       while (keytest != 84){
+                       while (keytest != 84){       //once the first letter has been rotated to the letter 't' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -578,9 +579,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (2):              //us
+                    case (2):                       //if tot = 2 the word is likely 'us'
                        keytest = str[ind];
-                       while (keytest != 85){
+                       while (keytest != 85){       //once the first letter has been rotated to the letter 'u' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -590,9 +591,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (9):          //of
+                    case (9):                       //if tot = 9 the word is likely 'of'
                        keytest = str[ind];
-                       while (keytest != 79){
+                       while (keytest != 79){       //once the first letter has been rotated to the letter 'o' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -602,9 +603,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (25):         //hi
+                    case (25):                      //if tot = 25 the word is likely 'hi'
                        keytest = str[ind];
-                       while (keytest != 72){
+                       while (keytest != 72){       //once the first letter has been rotated to the letter 'h' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -614,9 +615,9 @@ switch (task){
                        solved = 1;
                     break;
                     
-                    case (8):          //as
+                    case (8):                       //if tot = 8 the word is likely 'as'
                        keytest = str[ind];
-                       while (keytest != 65){
+                       while (keytest != 65){       //once the first letter has been rotated to the letter 'a' it will stop
                            keytest = keytest - 1;
                            if (keytest < 65){
                                keytest = keytest + 26;
@@ -631,15 +632,14 @@ switch (task){
                 }
             }
         }
-        if (key != 0){
+        if (key != 0){              //if the key isnt zero print the key value
             printf ("\nkey is %d" ,key);   
         }
            
-        if (key == 0){
+        if (key == 0){              //if the key is zero when the phrase was put in it might have not been jumbled up or my program wasnt able to find a word in it
             printf ("either the phrase doesnt need to be rotated or i cant find a word in it :(");
         }                    
-        ind = 0;
-        for (ind = 0 ; str[ind] != '\0' ; ind++){
+        for (ind = 0 ; str[ind] != '\0' ; ind++){           //this is the rotaion decryption code used before, it uses the key just found by the program and rotates the entire array by that amount hopefully revealing a decrypted phrase
             if (str[ind] > 96  &&  str[ind] < 123){
                 str[ind] = str[ind] - key;
                 if (str[ind] < 97){
@@ -653,7 +653,7 @@ switch (task){
                 }
             } 
         }
-        printf ("\nthe phrase is= %s\n" ,str);
+        printf ("\nthe phrase is= %s\n" ,str); //prints the decrypted phrase
     break;
     /************************************************************************************************/
 }
