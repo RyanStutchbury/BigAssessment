@@ -1,5 +1,15 @@
 #include <stdio.h>
 int main(){
+    /********************************************************************
+    to run the program press run, then click on the terminal.
+    type cd /projects/BigAssessment/ then press enter
+    type ls then press enter
+    you only have to do the above actions once
+    once you have done the above once everytime you want to run the program type ./a.out into the terminal then press enter
+    
+    my program uses a switch case statement to call upon the code for whatever action the user asks for
+    ********************************************************************/
+   
     /********************declaring the variables************************/
     int ind = 0;  
     int solved = 0;
@@ -9,7 +19,7 @@ int main(){
     char task;
     char keytest;
     char burn;
-    char str[5000];
+    char str[500000];
     char a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z;
     /******************************************************************/
    
@@ -24,7 +34,7 @@ int main(){
    /*************************Rotation Encryption************************/
 switch (task){ 
     case ('a'):
-        printf ("Key= ");    //gets the key from the user
+        printf ("Key= ");    //gets the key from the user and saves it to a variable to be used later
         scanf ("%d" ,&key);
         key=key % 26;     //this divides the key by 26 and uses the remainder as the new key so if the user inputs a key greater than 26 it wont break the code   
             for (ind = 0 ; str[ind] != '\0' ; ind++){     //this for loop goes through the array moving one letter right each time
