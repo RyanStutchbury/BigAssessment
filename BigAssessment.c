@@ -8,6 +8,8 @@ int main(){
     once you have done the above once everytime you want to run the program type ./a.out into the terminal then press enter
     
     my program uses a switch case statement to call upon the code for whatever action the user asks for
+    the program will only change letters of the alphabet, numerical values and punctuation will remain the same when encrypted or decrypted
+    the input can be either be capitals or lower case, my program will change it so it only returns capital letters
     ********************************************************************/
    
     /********************declaring the variables************************/
@@ -31,7 +33,14 @@ int main(){
     scanf ("%c" ,&task);
     /***********************************************************************************************/
    
-   /*************************Rotation Encryption************************/
+   /*************************Rotation Encryption*************************
+   This section of code will be run if the user selects 'a' when asked what task they would like to perform
+   it first asks for a key which the phrase will be rotated by, and saves that to a variable
+   then it capitalises any lower case characters
+   if when the key is added, the letter will go past 'Z' the program will minus 26 to send it back to the start of the alphabet
+   then the key is added to find the new value for each letter
+   **********************************************************************/
+   
 switch (task){ 
     case ('a'):
         printf ("Key= ");    //gets the key from the user and saves it to a variable to be used later
@@ -52,7 +61,13 @@ switch (task){
     break;
     /********************************************************************/
  
-    /*************************Substitution Ecryption************************/  
+    /*************************Substitution Ecryption************************
+    This section of code will be run if the user selects 'b' when asked what task they would like to perform
+    the substitution encryption replaces each letter of the alphabet with a different letter provided by the user
+    it first asks the user what each letter is equal to and saves that to a variable
+    then everytime that letter is found in the phrase it is changed to that specific variable
+    ***********************************************************************/
+        
     case ('b'):
         printf ("a b c d e f g h i j k l m n o p q r s t u v w x y z line up what each letter is equal to:\n");
         scanf ("%c" ,&burn);      //the enter from the task select is saved to an unused variable
@@ -226,7 +241,15 @@ switch (task){
     break;
     /**********************************************************************/
    
-    /*************************Known Rotation Decryption************************/
+    /*************************Known Rotation Decryption************************
+   This section of code will be run if the user selects 'c' when asked what task they would like to perform
+   this decryption is very similar to the encryption except for instead of adding the key, it is minused
+   it first asks for a key which the phrase will be rotated by, and saves that to a variable
+   then it capitalises any lower case characters
+   if when the key is subtracted, the letter will go past 'A' the program will minus 26 to send it back to the end of the alphabet
+   then the key is subtracted to find the new value for each letter
+   **********************************************************************/
+    
     case ('c'): 
         printf ("Key= ");       //gets key from the user
         scanf ("%d" ,&key);
@@ -247,8 +270,11 @@ switch (task){
     /********************************************************************/
    
    
-    /*************************Known Substitution Decryption************************/  
-   //substitution encryption and decryption are the same
+    /*************************Known Substitution Decryption************************
+   This section of code will be run if the user selects 'd' when asked what task they would like to perform
+   this code for substitution decryption is the same for substitution encryption as they have the same function for substituting one letter for another
+    ******************************************************************************/
+        
     case ('d'):
         printf ("a b c d e f g h i j k l m n o p q r s t u v w x y z line up what each letter is equal to:\n");
         scanf ("%c" ,&burn);      //the enter from the task select is saved to an unused variable
@@ -423,8 +449,11 @@ switch (task){
     /**********************************************************************/
    
     /********************************Unknown Rotation Decryption**************************************
+     This section of code will be run if the user selects 'e' when asked what task they would like to perform
      my unknown rotation decryption uses the distance between the first two letters of either a two or
      three letter word to take an educated guess of what the word might be when its decrypted
+     it uses this guess to find a key for the amount of times it was rotated
+     it then uses this key in the same rotation decryption code used earlier
      through experimentation ive found that two letter words are much more likely to be the right word
      so ive designed it so it searches for a two letter word first but searches for a three letter word
      if no two letter word was found
